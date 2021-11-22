@@ -2,7 +2,7 @@
 
 Download:
 * https://data.mendeley.com/datasets/46htwnp833/1
-* [local](46htwnp833-1.zip)
+* [github](46htwnp833-1.zip)
 
 Notes:
 * only used 684-990nm
