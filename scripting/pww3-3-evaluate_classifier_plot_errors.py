@@ -17,7 +17,7 @@ if not pkgs.is_installed("partialLeastSquares"):
     jvm.stop()
     sys.exit()
 
-# loading data
+# load data
 print("Loading data")
 train = load_any_file("./data/NAnderson2020MendeleyMangoNIRData-cal.arff")
 dm_index = train.attribute_by_name("DM").index
@@ -32,7 +32,7 @@ if msg is not None:
     jvm.stop()
     sys.exit(1)
 
-# configuring classifier
+# configure classifier
 print("Configuring classifier")
 lwl = SingleClassifierEnhancer(classname="weka.classifiers.lazy.LWL", options=["-K", "250"])
 lwl.classifier = Classifier(classname="weka.classifiers.functions.SMOreg")
@@ -47,11 +47,11 @@ fc = FilteredClassifier()
 fc.classifier = lwl
 fc.filter = multi
 
-# training classifier
+# train classifier
 print("Training classifier")
 fc.build_classifier(train)
 
-# evaluating classifier
+# evaluate classifier
 print("Evaluating classifier")
 evl = Evaluation(train)
 evl.test_model(fc, test)
