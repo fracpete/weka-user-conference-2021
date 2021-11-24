@@ -6,5 +6,8 @@
 
   * https://github.com/fracpete/sklearn-weka-plugin
 
-* Presentation: [.odp](scripting.odp)
+* Presentation: 
+
+  * [.odp](scripting.odp)
+  * [.pdf](scripting.pdf)
 

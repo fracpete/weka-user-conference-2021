@@ -8,6 +8,8 @@
 
   https://adams.cms.waikato.ac.nz/download/snapshot/
 
-* Presentation: [.odp](adams.odp)
+* Presentation: 
 
+  * [.odp](adams.odp)
+  * [.pdf](adams.pdf)
 
