@@ -21,7 +21,6 @@ if not pkgs.is_installed("partialLeastSquares"):
 print("Loading data")
 train = load_any_file("./data/NAnderson2020MendeleyMangoNIRData-cal.arff")
 dm_index = train.attribute_by_name("DM").index
-sid_index = train.attribute_by_name("SampleID").index
 train.class_index = dm_index
 test = load_any_file("./data/NAnderson2020MendeleyMangoNIRData-val_ext.arff")
 test.class_index = dm_index
@@ -63,6 +62,7 @@ with open("./output/summary.txt", "w") as f:
 # 2. errors plot
 plcls.plot_classifier_errors(evl.predictions, wait=False, outfile="./output/errors.png")
 # 3. predictions
+sid_index = train.attribute_by_name("SampleID").index
 preds = []
 for i, pred in enumerate(evl.predictions):
     preds.append([pred.actual, pred.predicted, test.get_instance(i).get_string_value(sid_index)])
