@@ -1,15 +1,17 @@
 import weka.core.jvm as jvm
-import weka.core.converters as converters
+from weka.core.converters import load_any_file
 from weka.classifiers import Classifier
 
-jvm.start(packages=True)
+jvm.start()
 
-data = converters.load_any_file("./data/iris.arff")
+# load data
+data = load_any_file("./data/iris.arff")
 data.class_is_last()
-cls = Classifier(classname="weka.classifiers.trees.J48", 
+
+# train classifier
+cls = Classifier(classname="weka.classifiers.trees.J48",
                  options=["-C", "0.3"])
 cls.build_classifier(data)
 print(cls)
 
 jvm.stop()
-
