@@ -32,6 +32,12 @@ if msg is not None:
     sys.exit(1)
 
 # configure classifier
+# FilteredClassifier
+# - MultiFilter
+#   - Remove (1-11)
+#   - PLS (20 components)
+# - LWL (250 neighbors)
+#   - SMOreg
 print("Configuring classifier")
 lwl = SingleClassifierEnhancer(classname="weka.classifiers.lazy.LWL", options=["-K", "250"])
 lwl.classifier = Classifier(classname="weka.classifiers.functions.SMOreg")
