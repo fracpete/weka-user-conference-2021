@@ -7,3 +7,4 @@ Download:
 Notes:
 * only used 684-990nm
 * two scans per sample (see DM)
+* removed all non-spectral columns apart from SampleID and DM 
