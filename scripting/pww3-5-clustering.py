@@ -1,7 +1,7 @@
 import weka.core.jvm as jvm
 from weka.core.converters import load_any_file
 from weka.core.dataset import Instances
-from weka.clusterers import Clusterer
+from weka.clusterers import Clusterer, ClusterEvaluation
 
 jvm.start()
 
@@ -18,14 +18,20 @@ clusterer.build_clusterer(data)
 print(clusterer)
 
 # cluster data
+print("--> Cluster instances")
 for index, inst in enumerate(data):
     cl = clusterer.cluster_instance(inst)
     dist = clusterer.distribution_for_instance(inst)
-    act_inst = data_copy.get_instance(index)
-    act = int(act_inst.get_value(data_copy.class_index))
-    print(str(index + 1) + ": cluster=" + str(cl)
-          + ", distribution=" + str(dist)
-          + ", actual=" + str(act)
-          + ", error=" + str(cl != act))
+    print(str(index + 1) + ": cluster=" + str(cl) + ", distribution=" + str(dist))
+
+# classes to clusters
+print("\n\n--> Classes to clusters")
+evl = ClusterEvaluation()
+evl.set_model(clusterer)
+evl.test_model(data_copy)
+print("Cluster results")
+print(evl.cluster_results)
+print("Classes to clusters")
+print(evl.classes_to_clusters)
 
 jvm.stop()
