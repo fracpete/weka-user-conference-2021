@@ -77,12 +77,10 @@ ax.set_ylabel("Predicted")
 ax.set_title("Classifier errors")
 plt.savefig("./output/errors.png")
 # 3. predictions
-preds = []
-for i in range(len(test_y)):
-    preds.append([test_y[i], test_predicted[i], test_X[i, 0]])
 with open("./output/predictions.csv", 'w') as f:
     writer = csv.writer(f)
     writer.writerow(["Actual", "Predicted", "SampleID"])
-    writer.writerows(preds)
+    for i in range(len(test_y)):
+        writer.writerow([test_y[i], test_predicted[i], test_X[i, 0]])
 
 jvm.stop()

@@ -69,12 +69,10 @@ with open("./output/summary.txt", "w") as f:
 plcls.plot_classifier_errors(evl.predictions, wait=False, outfile="./output/errors.png")
 # 3. predictions
 sid_index = train.attribute_by_name("SampleID").index
-preds = []
-for i, pred in enumerate(evl.predictions):
-    preds.append([pred.actual, pred.predicted, test.get_instance(i).get_value(sid_index)])
 with open("./output/predictions.csv", 'w') as f:
     writer = csv.writer(f)
     writer.writerow(["Actual", "Predicted", "SampleID"])
-    writer.writerows(preds)
+    for i, pred in enumerate(evl.predictions):
+        writer.writerow([pred.actual, pred.predicted, test.get_instance(i).get_value(sid_index)])
 
 jvm.stop()
