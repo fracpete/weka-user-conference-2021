@@ -44,7 +44,7 @@ lwl.classifier = Classifier(classname="weka.classifiers.functions.SMOreg")
 
 multi = MultiFilter()
 multi.filters = [
-    Filter(classname="weka.filters.unsupervised.attribute.Remove", options=["-R", "12-last", "-V"]),
+    Filter(classname="weka.filters.unsupervised.attribute.Remove", options=["-R", "1"]),
     Filter(classname="weka.filters.supervised.attribute.PLSFilter")
 ]
 
@@ -71,7 +71,7 @@ plcls.plot_classifier_errors(evl.predictions, wait=False, outfile="./output/erro
 sid_index = train.attribute_by_name("SampleID").index
 preds = []
 for i, pred in enumerate(evl.predictions):
-    preds.append([pred.actual, pred.predicted, test.get_instance(i).get_string_value(sid_index)])
+    preds.append([pred.actual, pred.predicted, test.get_instance(i).get_value(sid_index)])
 with open("./output/predictions.csv", 'w') as f:
     writer = csv.writer(f)
     writer.writerow(["Actual", "Predicted", "SampleID"])
