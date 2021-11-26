@@ -27,14 +27,14 @@ test.class_index = dm_index
 
 msg = train.equal_headers(test)
 if msg is not None:
-    print("Incompatible datasets!")
+    print("Incompatible datasets:\n %s" % msg)
     jvm.stop()
     sys.exit(1)
 
 # configure classifier
 # FilteredClassifier
 # - MultiFilter
-#   - Remove (1-11)
+#   - Remove (1)
 #   - PLS (20 components)
 # - LWL (250 neighbors)
 #   - SMOreg
@@ -66,7 +66,7 @@ evl.test_model(fc, test)
 with open("./output/summary.txt", "w") as f:
     f.write(evl.summary())
 # 2. errors plot
-plcls.plot_classifier_errors(evl.predictions, wait=False, outfile="./output/errors.png")
+plcls.plot_classifier_errors(evl.predictions, wait=True, outfile="./output/errors.png")
 # 3. predictions
 sid_index = train.attribute_by_name("SampleID").index
 with open("./output/predictions.csv", 'w') as f:
