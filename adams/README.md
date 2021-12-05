@@ -4,9 +4,9 @@
 
   https://adams.cms.waikato.ac.nz/
 
-* Use the *adams-ml-app-snapshot* download
-
-  https://adams.cms.waikato.ac.nz/download/snapshot/
+* Use the *adams-ml-app* download, either from:
+  * [21.12.0 release](https://adams.cms.waikato.ac.nz/download/21-12-0/)
+  * [daily snapshot](https://adams.cms.waikato.ac.nz/download/snapshot/)
 
 * Presentation: 
 
